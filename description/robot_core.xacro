@@ -19,11 +19,19 @@
     <material name="black">
         <color rgba="0 0 0 1"/>
     </material>
-
-    <link name="base_link">
-        
+    <!-- Base_Link -->
+    <link name="base_link">    
     </link>
+    <!-- Base_Footprint -->
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <origin xyz="0.0 0.0 0.0"/>
+    </joint>
 
+    <link name="base_footprint">
+    </link>
+    <!-- Chasis -->
     <joint name="chasis joint" type="fixed">
         <parent link="base_link"/>
         <child link="chasis"/>
