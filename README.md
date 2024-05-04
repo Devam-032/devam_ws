@@ -1,7 +1,34 @@
-## Robot Package Template
+# ROS2 Nav2 Custom Robot Project
 
-This is a GitHub template. You can make your own copy by clicking the green "Use this template" button.
+This ROS2 project is aimed at implementing Nav2 (Navigation2) on a custom robot platform. Below is a brief overview of the project structure and instructions for launching the simulation and mapping components.
 
-It is recommended that you keep the repo/package name the same, but if you do change it, ensure you do a "Find all" using your IDE (or the built-in GitHub IDE by hitting the `.` key) and rename all instances of `my_bot` to whatever your project's name is.
+## Project Structure
 
-Note that each directory currently has at least one file in it to ensure that git tracks the files (and, consequently, that a fresh clone has direcctories present for CMake to find). These example files can be removed if required (and the directories can be removed if `CMakeLists.txt` is adjusted accordingly).
+### Description Folder
+
+- **URDF Models**: Contains URDF models of the robot.
+- **robot_core.xacro**: Declaration of all visual tags for the robot.
+- **inertial_macros.xacro**: Contains information regarding the inertials of different components used in the robot.
+
+### Config Folder
+
+- **my_controllers.yaml**: Configuration file for Diff_drive_controller and Jointstate_publisher.
+- **mapper_params_online_async.yaml**: Configuration file for SLAM Toolbox.
+
+## Launching the Simulation
+
+To launch the simulation in Gazebo, execute the following command:
+
+```bash
+ros2 launch my_bot launch_sim.launch.py
+```
+
+## Launching Mapping
+
+To launch the mapping component using SLAM Toolbox, execute the following command:
+
+```bash
+ros2 launch slam_toolbox online_async_launch.py params_file:=./src/my_bot/config/mapper_params_online_async.yaml use_sim_time:=true
+```
+
+Feel free to explore and modify the project as needed for your custom robot platform. Happy coding! 🤖🚀
